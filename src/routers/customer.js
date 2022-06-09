@@ -1,7 +1,8 @@
 const express = require("express");
-const {
-    createCustomer
-} = require('../controllers/customer');
+const cors = require("cors")
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const { createCustomer } = require('../controllers/customer');
 
 const router = express.Router();
 
