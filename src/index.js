@@ -22,16 +22,23 @@ app.use(bodyParser.json());
 const customerRouter = require('./routers/customer');
 app.use('/customer', customerRouter);
 
-const getMovieRouter = require('./routers/movie')
+const getMovieRouter = require('./routers/movie');
 app.use('/movie', getMovieRouter);
 
-// Set up a default "catch all" route to use when someone visits a route that we haven't built
+const screenRouter = require('./routers/screen');
+app.use('/screen', screenRouter);
+
+const ticketRouter = require('./routers/ticket');
+app.use('/ticket', ticketRouter);
+
+// Set up a default "catch all" route to use when someone visits a route
+// that we haven't built
 app.get('*', (req, res) => {
-    res.json({ ok: true });
+	res.json({ ok: true });
 });
 
 // Start our API server
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
-    console.log(`\n Server is running on http://localhost:${port}\n`);
+	console.log(`\n Server is running on http://localhost:${port}\n`);
 });
